@@ -5,6 +5,8 @@ import 'package:KurdTour/registar/login.dart';
 
 import 'package:flutter/material.dart';
 
+import '../locationDetiles/locationdetiles.dart';
+
 class Add extends StatefulWidget {
   const Add({Key? key}) : super(key: key);
 
@@ -19,8 +21,8 @@ class _AddState extends State<Add> {
     super.initState();
     Timer(
         const Duration(seconds: 3),
-        () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => Login())));
+        () => Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => LocationDetileView())));
   }
 
   @override
