@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "994726498036",
+    "project_id": "kurdtour",
+    "storage_bucket": "kurdtour.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:994726498036:android:500cdc992253cb73f558a1",
+        "android_client_info": {
+          "package_name": "com.example.myapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "994726498036-39cs3q33pvpcd1vi2pp42m4k08lcpm97.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDy7aBMMFuZZpR5C9-48i-fQ6-E-LpdfIQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "994726498036-39cs3q33pvpcd1vi2pp42m4k08lcpm97.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
