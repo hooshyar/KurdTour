@@ -4,6 +4,8 @@ import 'package:KurdTour/registar/login.dart';
 import 'package:KurdTour/registar/signup.dart';
 import 'package:flutter/material.dart';
 
+import 'home_main/home_bottom.dart';
+
 class AppView extends StatelessWidget {
   const AppView({Key? key}) : super(key: key);
 
@@ -18,7 +20,7 @@ class AppView extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => Add(),
-        '/homeScreen': (context) => const HomeMainScreen(),
+        '/homeScreen': (context) => const HomeMain(),
       },
     );
   }

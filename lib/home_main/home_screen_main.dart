@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import '../profilescreen/profilescreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:KurdTour/data/location.dart';
 
 class HomeMainScreen extends StatefulWidget {
   const HomeMainScreen({Key? key}) : super(key: key);
@@ -39,19 +40,28 @@ class _HomeMainScreenState extends State<HomeMainScreen> {
             backgroundColor: Colors.amber[500],
           ),
           body: Center(
-            child: Container(
-              margin: const EdgeInsets.only(top: 10),
-              width: 360,
-              child: ListView(
-                children: [
-                  generalcard('assets/images/05.jpg', titlee, discription),
-                  generalcard('assets/images/02.jpg', titlee, discription),
-                  generalcard('assets/images/03.jpg', titlee, discription),
-                  generalcard('assets/images/04.jpg', titlee, discription),
-                  ElevatedButton(onPressed: getData, child: Text('data'))
-                ],
-              ),
-            ),
+            child: StreamBuilder<QuerySnapshot>(
+                stream: _fireStore.collection("Location").snapshots(),
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return LinearProgressIndicator();
+                  }
+                  List<Location> _locations = snapshot.data!.docs
+                      .map((e) =>
+                          Location.fromMap(e.data() as Map<String, dynamic>))
+                      .toList();
+                  return Container(
+                      margin: const EdgeInsets.only(top: 10),
+                      width: 360,
+                      child: ListView.builder(
+                          itemCount: _locations.length,
+                          itemBuilder: (context, index) {
+                            return generalcard(
+                              titledoc: _locations[index].title,
+                              discription: _locations[index].description,
+                            );
+                          }));
+                }),
           ),
         ));
   }

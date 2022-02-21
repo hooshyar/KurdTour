@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-Widget generalcard(String image, String titleloc, String discription) {
+Widget generalcard({String? image, String? titledoc, String? discription}) {
   return InkWell(
     child: Container(
       margin: const EdgeInsets.only(top: 10, bottom: 10),
@@ -16,18 +16,18 @@ Widget generalcard(String image, String titleloc, String discription) {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(
-            width: 170,
-            height: 140,
-            padding: const EdgeInsets.all(5),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Image.asset(
-                image,
-                fit: BoxFit.fitHeight,
-              ),
-            ),
-          ),
+          // Container(
+          //   width: 170,
+          //   height: 140,
+          //   padding: const EdgeInsets.all(5),
+          //   child: ClipRRect(
+          //     borderRadius: BorderRadius.circular(15),
+          //     child: Image.asset(
+          //       image,
+          //       fit: BoxFit.fitHeight,
+          //     ),
+          //   ),
+          // ),
           SizedBox(
             width: 170,
             child: Column(
@@ -35,7 +35,7 @@ Widget generalcard(String image, String titleloc, String discription) {
                 Container(
                   margin: const EdgeInsets.only(top: 7, bottom: 7),
                   child: Text(
-                    titleloc,
+                    titledoc ?? 'title',
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       color: Colors.amber,
@@ -49,7 +49,7 @@ Widget generalcard(String image, String titleloc, String discription) {
                   height: 67,
                   margin: const EdgeInsets.only(bottom: 7),
                   child: Text(
-                    discription,
+                    discription ?? 'description',
                     overflow: TextOverflow.clip,
                   ),
                 ),

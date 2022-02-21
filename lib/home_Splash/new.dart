@@ -21,8 +21,8 @@ class _AddState extends State<Add> {
     super.initState();
     Timer(
         const Duration(seconds: 3),
-        () => Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => LocationDetileView())));
+        () => Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => HomeMain())));
   }
 
   @override

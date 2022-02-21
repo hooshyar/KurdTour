@@ -27,18 +27,18 @@ class _FaveScreenState extends State<FaveScreen> {
             backgroundColor: Colors.amber[500],
           ),
           body: Center(
-            child: Container(
-              margin: const EdgeInsets.only(top: 10),
-              width: 360,
-              child: Center(
-                child: ListView(
-                  children: [
-                    generalcard(imagee, titlee, discription),
-                  ],
-                ),
+              // child: Container(
+              //   margin: const EdgeInsets.only(top: 10),
+              //   width: 360,
+              //   child: Center(
+              //     child: ListView(
+              //       children: [
+              //         generalcard("imagee", titlee, discription),
+              //       ],
+              //     ),
+              //   ),
+              // ),
               ),
-            ),
-          ),
         ));
   }
 }
