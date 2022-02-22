@@ -6,7 +6,7 @@
     <meta-data android:name="com.google.android.geo.API_KEY"
                android:value="AIzaSyDy7aBMMFuZZpR5C9-48i-fQ6-E-LpdfIQ"/>
    <application
-        android:label="myapp"
+        android:label="KurdTour"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
