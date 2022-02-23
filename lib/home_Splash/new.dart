@@ -21,8 +21,8 @@ class _AddState extends State<Add> {
     super.initState();
     Timer(
         const Duration(seconds: 3),
-        () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => HomeMain())));
+        () => Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => LocationDetileView())));
   }
 
   @override
@@ -44,9 +44,13 @@ class _AddState extends State<Add> {
             ),
             Container(
                 margin: const EdgeInsets.only(top: 300),
-                child: const Text('Loading')),
-            CircularProgressIndicator(
-              color: Colors.amber[200],
+                child: const Text('from wecode')),
+            Container(
+              margin: const EdgeInsets.only(top: 20),
+              child: Image.asset(
+                'assets/images/rwanga_logo.png',
+                height: 60,
+              ),
             )
           ],
         ),

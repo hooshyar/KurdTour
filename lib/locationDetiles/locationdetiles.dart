@@ -11,7 +11,7 @@ class LocationDetileView extends StatefulWidget {
 
 class _LocationDetileViewState extends State<LocationDetileView> {
   late GoogleMapController mapController;
-  final LatLng _center = const LatLng(45.521563, -122.677433);
+  final LatLng _center = const LatLng(36.872664, 42.974988);
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
@@ -32,7 +32,7 @@ class _LocationDetileViewState extends State<LocationDetileView> {
         ),
         body: Container(
             margin: EdgeInsets.only(left: 10, top: 20),
-            height: 650,
+            height: 660,
             width: 370,
             color: Colors.grey[200],
             child: Column(
@@ -88,8 +88,22 @@ class _LocationDetileViewState extends State<LocationDetileView> {
                               print(rating);
                             },
                           )),
-                    ),
+                    )
                   ],
+                ),
+                const Text('Discription',
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    )),
+                Container(
+                  width: 300,
+                  margin: EdgeInsets.only(top: 10, bottom: 10),
+                  child: const Text(
+                      'dlfl;dsf,lds,l ,flds,lf;kmldsfmldsfldsl;fkl;sdkfl;skdlfkl;dsfk;ldskfl;dskl;fkl;f',
+                      style: TextStyle(
+                        fontSize: 14,
+                      )),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -136,14 +150,16 @@ class _LocationDetileViewState extends State<LocationDetileView> {
                   ],
                 ),
                 Container(
+                  margin: EdgeInsets.only(top: 20),
                   width: 350,
-                  height: 300,
+                  height: 230,
                   child: GoogleMap(
                     onMapCreated: _onMapCreated,
                     initialCameraPosition: CameraPosition(
                       target: _center,
                       zoom: 11.0,
                     ),
+                    myLocationButtonEnabled: true,
                   ),
                 )
               ],
