@@ -4,6 +4,7 @@ import 'package:KurdTour/search_screen/serchvew.dart';
 import 'package:KurdTour/servis/firestore_service.dart';
 import 'package:KurdTour/style_widget/card.dart';
 import 'package:flutter/material.dart';
+import '../locationDetiles/locationdetiles.dart';
 import '../profilescreen/profilescreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -20,11 +21,6 @@ class _HomeMainScreenState extends State<HomeMainScreen> {
   CollectionReference _collectionRef =
       FirebaseFirestore.instance.collection('Location');
   final _fireStore = FirebaseFirestore.instance;
-
-  var rating = 3.0;
-  String imagee = 'assets/images/01.jpg';
-  String titlee = 'new';
-  String discription = 'dec';
 
   @override
   Widget build(BuildContext context) {
@@ -50,17 +46,26 @@ class _HomeMainScreenState extends State<HomeMainScreen> {
                       .map((e) =>
                           Location.fromMap(e.data() as Map<String, dynamic>))
                       .toList();
-                  return Container(
-                      margin: const EdgeInsets.only(top: 10),
-                      width: 360,
-                      child: ListView.builder(
-                          itemCount: _locations.length,
-                          itemBuilder: (context, index) {
-                            return generalcard(
-                              titledoc: _locations[index].title,
-                              discription: _locations[index].description,
-                            );
-                          }));
+
+                  return ListView.builder(
+                      itemCount: _locations.length,
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 10, right: 10),
+                            child: generalcard(
+                                image:
+                                    'https://images.unsplash.com/photo-1547721064-da6cfb341d50',
+                                titledoc: _locations[index].title,
+                                discription: _locations[index].description,
+                                ratingnew: _locations[index].rating),
+                          ),
+                          onTap: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => LocationDetileView(
+                                      loc: _locations[index]))),
+                        );
+                      });
                 }),
           ),
         ));

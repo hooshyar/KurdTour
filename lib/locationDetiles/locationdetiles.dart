@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class LocationDetileView extends StatefulWidget {
-  const LocationDetileView({Key? key}) : super(key: key);
+import '../data/location.dart';
 
+class LocationDetileView extends StatefulWidget {
+  const LocationDetileView({Key? key, required this.loc}) : super(key: key);
+  final Location loc;
   @override
   State<LocationDetileView> createState() => _LocationDetileViewState();
 }
@@ -24,8 +26,8 @@ class _LocationDetileViewState extends State<LocationDetileView> {
           scaffoldBackgroundColor: Color.fromARGB(255, 255, 255, 255)),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text(
-            'Location Detile',
+          title: Text(
+            widget.loc.description.toString(),
             style: TextStyle(color: Colors.black),
           ),
           backgroundColor: Colors.amber[500],
@@ -41,8 +43,8 @@ class _LocationDetileViewState extends State<LocationDetileView> {
                   margin: EdgeInsets.only(top: 10),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15),
-                    child: Image.asset(
-                      'assets/images/03.jpg',
+                    child: Image.network(
+                      widget.loc.image.toString(),
                       fit: BoxFit.fitWidth,
                       height: 200,
                       width: 360,
@@ -56,8 +58,8 @@ class _LocationDetileViewState extends State<LocationDetileView> {
                         margin: EdgeInsets.only(top: 10),
                         height: 50,
                         width: 220,
-                        child: const Text(
-                          "Duhok Mall",
+                        child: Text(
+                          widget.loc.title.toString(),
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Colors.amber,
@@ -79,6 +81,7 @@ class _LocationDetileViewState extends State<LocationDetileView> {
                             direction: Axis.horizontal,
                             allowHalfRating: true,
                             itemCount: 5,
+                            updateOnDrag: false,
                             itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
                             itemBuilder: (context, _) => Icon(
                               Icons.star,
