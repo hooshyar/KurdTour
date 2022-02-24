@@ -37,7 +37,7 @@ Widget generalcard(
               Container(
                 margin: const EdgeInsets.only(top: 7, bottom: 7),
                 child: Text(
-                  titledoc ?? 'title',
+                  titledoc!,
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                     color: Colors.amber,

@@ -58,7 +58,7 @@ class _HomeMainScreenState extends State<HomeMainScreen> {
                                     'https://images.unsplash.com/photo-1547721064-da6cfb341d50',
                                 titledoc: _locations[index].title,
                                 discription: _locations[index].description,
-                                ratingnew: _locations[index].rating),
+                                ratingnew:_locations[index].rating),
                           ),
                           onTap: () => Navigator.of(context).push(
                               MaterialPageRoute(
