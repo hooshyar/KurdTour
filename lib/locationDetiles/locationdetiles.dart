@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../data/location.dart';
@@ -12,7 +13,6 @@ class LocationDetileView extends StatefulWidget {
 
 class _LocationDetileViewState extends State<LocationDetileView> {
   late GoogleMapController mapController;
-  final LatLng _center = const LatLng(36.872664, 42.974988);
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
   }
@@ -31,7 +31,7 @@ class _LocationDetileViewState extends State<LocationDetileView> {
           backgroundColor: Colors.amber[500],
         ),
         body: Container(
-            margin: EdgeInsets.only(left: 10, top: 20),
+            margin: EdgeInsets.only(left: 10, top: 10),
             height: 620,
             width: 370,
             color: Colors.grey[200],
@@ -42,7 +42,7 @@ class _LocationDetileViewState extends State<LocationDetileView> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15),
                     child: Image.network(
-                      'https://firebasestorage.googleapis.com/v0/b/kurdtour.appspot.com/o/05.jpg?alt=media&token=aadc3b1f-d499-4788-afe6-8a201e2e5721',
+                      widget.loc.image.toString(),
                       fit: BoxFit.fitWidth,
                       height: 160,
                       width: 350,
@@ -53,7 +53,7 @@ class _LocationDetileViewState extends State<LocationDetileView> {
                   children: [
                     Center(
                       child: Container(
-                        margin: EdgeInsets.only(top: 10),
+                        margin: EdgeInsets.only(top: 15),
                         height: 50,
                         width: 220,
                         child: Text(
@@ -68,11 +68,16 @@ class _LocationDetileViewState extends State<LocationDetileView> {
                       ),
                     ),
                     Center(
-                      child: Container(
-                          alignment: Alignment.center,
-                          height: 50,
-                          width: 150,
-                          child: Text(widget.loc.rating.toString())),
+                      child: RatingBarIndicator(
+                        rating: widget.loc.rating!.toDouble(),
+                        itemBuilder: (context, index) => const Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                        ),
+                        itemCount: 5,
+                        itemSize: 26,
+                        direction: Axis.horizontal,
+                      ),
                     )
                   ],
                 ),
@@ -84,16 +89,15 @@ class _LocationDetileViewState extends State<LocationDetileView> {
                 Container(
                   width: 300,
                   margin: EdgeInsets.only(top: 10, bottom: 10),
-                  child: const Text(
-                      'dlfl;dsf,lds,l ,flds,lf;kmldsfmldsfldsl;fkl;sdkfl;skdlfkl;dsfk;ldskfl;dskl;fkl;f',
+                  child: Text(widget.loc.description.toString(),
                       style: TextStyle(
                         fontSize: 14,
                       )),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
+                  children: [
+                    const Text(
                       'Opiting hour : ',
                       style: TextStyle(
                         fontSize: 15,
@@ -101,7 +105,7 @@ class _LocationDetileViewState extends State<LocationDetileView> {
                       ),
                     ),
                     Text(
-                      "11:30 AM - 18:30 PM",
+                      widget.loc.openhourse.toString(),
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
@@ -113,7 +117,7 @@ class _LocationDetileViewState extends State<LocationDetileView> {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
+                  children: const [
                     Text(
                       "Visit Website",
                       style: TextStyle(
@@ -141,7 +145,8 @@ class _LocationDetileViewState extends State<LocationDetileView> {
                   child: GoogleMap(
                     onMapCreated: _onMapCreated,
                     initialCameraPosition: CameraPosition(
-                      target: _center,
+                      target: LatLng(widget.loc.locl!.toDouble(),
+                          widget.loc.loca!.toDouble()),
                       zoom: 11.0,
                     ),
                     myLocationButtonEnabled: true,

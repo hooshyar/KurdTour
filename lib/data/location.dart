@@ -11,7 +11,8 @@ class Location {
   String? openhourse;
   String? website;
   String? email;
-  String? loc;
+  double? locl;
+  double? loca;
   Location({
     this.lid,
     this.image,
@@ -21,7 +22,8 @@ class Location {
     this.openhourse,
     this.website,
     this.email,
-    this.loc,
+    this.locl,
+    this.loca,
   });
 
   Location copyWith({
@@ -33,7 +35,8 @@ class Location {
     String? openhourse,
     String? website,
     String? email,
-    String? loc,
+    double? locl,
+    double? loca,
   }) {
     return Location(
       lid: lid ?? this.lid,
@@ -44,7 +47,8 @@ class Location {
       openhourse: openhourse ?? this.openhourse,
       website: website ?? this.website,
       email: email ?? this.email,
-      loc: loc ?? this.loc,
+      locl: locl ?? this.locl,
+      loca: loca ?? this.loca,
     );
   }
 
@@ -58,7 +62,8 @@ class Location {
       'openhourse': openhourse,
       'website': website,
       'email': email,
-      'loc': loc,
+      'locl': locl,
+      'loca': loca,
     };
   }
 
@@ -72,7 +77,8 @@ class Location {
       openhourse: map['openhourse'],
       website: map['website'],
       email: map['email'],
-      loc: map['loc'],
+      locl: map['locl']?.toDouble(),
+      loca: map['loca']?.toDouble(),
     );
   }
 
@@ -83,7 +89,7 @@ class Location {
 
   @override
   String toString() {
-    return 'Location(lid: $lid, image: $image, title: $title, description: $description, rating: $rating, openhourse: $openhourse, website: $website, email: $email, loc: $loc)';
+    return 'Location(lid: $lid, image: $image, title: $title, description: $description, rating: $rating, openhourse: $openhourse, website: $website, email: $email, locl: $locl, loca: $loca)';
   }
 
   @override
@@ -99,7 +105,8 @@ class Location {
         other.openhourse == openhourse &&
         other.website == website &&
         other.email == email &&
-        other.loc == loc;
+        other.locl == locl &&
+        other.loca == loca;
   }
 
   @override
@@ -112,6 +119,7 @@ class Location {
         openhourse.hashCode ^
         website.hashCode ^
         email.hashCode ^
-        loc.hashCode;
+        locl.hashCode ^
+        loca.hashCode;
   }
 }

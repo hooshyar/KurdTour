@@ -18,15 +18,16 @@ Widget generalcard(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          width: 170,
+          width: 180,
           height: 140,
-          padding: const EdgeInsets.all(5),
+          padding: const EdgeInsets.only(left: 7, right: 7, bottom: 5, top: 5),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(15),
             child: Image.network(
               image ??
                   'https://images.unsplash.com/photo-1547721064-da6cfb341d50',
-              fit: BoxFit.fitHeight,
+              fit: BoxFit.fill,
+              width: 180,
             ),
           ),
         ),

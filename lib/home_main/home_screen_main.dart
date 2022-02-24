@@ -54,11 +54,10 @@ class _HomeMainScreenState extends State<HomeMainScreen> {
                           child: Padding(
                             padding: const EdgeInsets.only(left: 10, right: 10),
                             child: generalcard(
-                                image:
-                                    'https://images.unsplash.com/photo-1547721064-da6cfb341d50',
+                                image: _locations[index].image,
                                 titledoc: _locations[index].title,
                                 discription: _locations[index].description,
-                                ratingnew:_locations[index].rating),
+                                ratingnew: _locations[index].rating),
                           ),
                           onTap: () => Navigator.of(context).push(
                               MaterialPageRoute(
@@ -71,15 +70,30 @@ class _HomeMainScreenState extends State<HomeMainScreen> {
         ));
   }
 
+  void _onPressed() {
+    _fireStore.collection("Location").add({
+      'description': "very new",
+      'email': "h@gmail.com",
+      'image':
+          "https://firebasestorage.googleapis.com/v0/b/kurdtour-3d30f.appspot.com/o/05.jpg?alt=media&token=431a3130-573d-448a-9546-318cc2699fc7",
+      'lid': "",
+      'loca': 25,
+      'locl': 22,
+      'openhourse': "10:30 12:30",
+      'rating': 1,
+      'title': "duhok mall",
+      'website': "www.com"
+    }).then((value) {
+      print(value.id);
+    });
+  }
+
   Future<void> getData() async {
     // Get docs from collection reference
     QuerySnapshot querySnapshot = await _fireStore.collection('Location').get();
-
     // Get data from docs and convert map to List
-
     //for a specific field
     final allData = querySnapshot.docs.map((doc) => doc.get('title')).toList();
-
     print(allData);
   }
 }
