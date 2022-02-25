@@ -49,7 +49,7 @@ class _HomeMainScreenState extends State<HomeMain> {
                   backgroundColor: Color.fromARGB(255, 255, 156, 7)),
               BottomNavigationBarItem(
                   icon: Icon(Icons.star),
-                  label: 'Favoreate',
+                  label: 'Favorite',
                   backgroundColor: Color.fromARGB(255, 255, 156, 7)),
               BottomNavigationBarItem(
                   icon: Icon(Icons.person),

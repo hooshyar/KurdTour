@@ -164,6 +164,7 @@ class _LoginFormState extends State<LoginForm> {
                       .signIn(email: email!, password: password!)
                       .then((result) {
                     if (result == null) {
+                      final String giniraluser = email.toString();
                       Navigator.pushReplacement(context,
                           MaterialPageRoute(builder: (context) => HomeMain()));
                     } else {

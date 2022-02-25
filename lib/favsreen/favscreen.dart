@@ -21,7 +21,7 @@ class _FaveScreenState extends State<FaveScreen> {
         home: Scaffold(
           appBar: AppBar(
             title: const Text(
-              'Favoreat',
+              'Favorite',
               style: TextStyle(color: Colors.black),
             ),
             backgroundColor: Colors.amber[500],

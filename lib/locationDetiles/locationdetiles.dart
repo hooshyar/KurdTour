@@ -51,7 +51,7 @@ class _LocationDetileViewState extends State<LocationDetileView> {
         ),
         body: Container(
             margin: EdgeInsets.only(left: 10, top: 10),
-            height: 620,
+            height: 655,
             width: 370,
             color: Colors.grey[200],
             child: Column(
@@ -62,8 +62,8 @@ class _LocationDetileViewState extends State<LocationDetileView> {
                     borderRadius: BorderRadius.circular(15),
                     child: Image.network(
                       widget.loc.image.toString(),
-                      fit: BoxFit.fitWidth,
-                      height: 160,
+                      fit: BoxFit.cover,
+                      height: 180,
                       width: 350,
                     ),
                   ),
@@ -137,7 +137,7 @@ class _LocationDetileViewState extends State<LocationDetileView> {
                   ],
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -165,13 +165,13 @@ class _LocationDetileViewState extends State<LocationDetileView> {
                 Container(
                   margin: EdgeInsets.only(top: 20),
                   width: 350,
-                  height: 230,
+                  height: 235,
                   child: GoogleMap(
                     onMapCreated: _onMapCreated,
                     initialCameraPosition: CameraPosition(
-                      target: LatLng(widget.loc.locl!.toDouble(),
-                          widget.loc.loca!.toDouble()),
-                      zoom: 11.0,
+                      target: LatLng(widget.loc.loca!.toDouble(),
+                          widget.loc.locl!.toDouble()),
+                      zoom: 15.0,
                     ),
                     myLocationButtonEnabled: true,
                   ),

@@ -28,7 +28,7 @@ class _SerachScreenState extends State<SerachScreen> {
         home: Scaffold(
             appBar: AppBar(
               title: const Text(
-                'Search And Filter',
+                'Search for Location',
                 style: TextStyle(color: Colors.black),
               ),
               backgroundColor: Colors.amber[500],
