@@ -1,7 +1,7 @@
+import 'package:KurdTour/home_main/home_screen_main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-
 import '../data/location.dart';
 
 class LocationDetileView extends StatefulWidget {
@@ -24,8 +24,27 @@ class _LocationDetileViewState extends State<LocationDetileView> {
           scaffoldBackgroundColor: Color.fromARGB(255, 255, 255, 255)),
       home: Scaffold(
         appBar: AppBar(
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.favorite,
+                color: Colors.black,
+              ),
+            ),
+          ],
+          leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => HomeMainScreen()));
+            },
+            icon: Icon(
+              Icons.home,
+              color: Colors.black,
+            ),
+          ),
           title: Text(
-            "Location Detile",
+            "Location Detail",
             style: TextStyle(color: Colors.black),
           ),
           backgroundColor: Colors.amber[500],
@@ -50,24 +69,23 @@ class _LocationDetileViewState extends State<LocationDetileView> {
                   ),
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Center(
-                      child: Container(
-                        margin: EdgeInsets.only(top: 15),
-                        height: 50,
-                        width: 220,
-                        child: Text(
-                          widget.loc.title.toString(),
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.amber,
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                          ),
+                    Container(
+                      margin: EdgeInsets.only(top: 5),
+                      width: 220,
+                      child: Text(
+                        widget.loc.title.toString(),
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.amber,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
-                    Center(
+                    Container(
+                      margin: EdgeInsets.only(top: 5),
                       child: RatingBarIndicator(
                         rating: widget.loc.rating!.toDouble(),
                         itemBuilder: (context, index) => const Icon(
@@ -81,15 +99,21 @@ class _LocationDetileViewState extends State<LocationDetileView> {
                     )
                   ],
                 ),
-                const Text('Discription',
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                    )),
                 Container(
-                  width: 300,
+                  margin: EdgeInsets.only(top: 10),
+                  child: const Text('Description',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      )),
+                ),
+                Container(
+                  width: 330,
+                  height: 65,
                   margin: EdgeInsets.only(top: 10, bottom: 10),
                   child: Text(widget.loc.description.toString(),
+                      overflow: TextOverflow.fade,
+                      textAlign: TextAlign.justify,
                       style: TextStyle(
                         fontSize: 14,
                       )),
@@ -113,7 +137,7 @@ class _LocationDetileViewState extends State<LocationDetileView> {
                   ],
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,

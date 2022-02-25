@@ -53,7 +53,8 @@ Widget generalcard(
                 margin: const EdgeInsets.only(bottom: 7),
                 child: Text(
                   discription ?? 'description',
-                  overflow: TextOverflow.clip,
+                  overflow: TextOverflow.fade,
+                  textAlign: TextAlign.justify,
                 ),
               ),
               RatingBarIndicator(
