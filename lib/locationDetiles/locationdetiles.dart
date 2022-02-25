@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../data/location.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LocationDetileView extends StatefulWidget {
   const LocationDetileView({Key? key, required this.loc}) : super(key: key);
@@ -141,24 +142,34 @@ class _LocationDetileViewState extends State<LocationDetileView> {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: const [
-                    Text(
-                      "Visit Website",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                  children: [
+                    InkWell(
+                      child: const Text(
+                        "Visit Website",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
+                      onTap: () => {launch(widget.loc.website!)},
                     ),
-                    Text(
-                      "Call",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                    InkWell(
+                      child: const Text(
+                        "Call",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
+                      onTap: () =>
+                          {launch('tel:' + widget.loc.phone.toString())},
                     ),
-                    Text(
-                      "Email",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                    InkWell(
+                      child: const Text(
+                        "Email",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
+                      onTap: () => {launch('mailto:' + widget.loc.email!)},
                     )
                   ],
                 ),
@@ -171,7 +182,7 @@ class _LocationDetileViewState extends State<LocationDetileView> {
                     initialCameraPosition: CameraPosition(
                       target: LatLng(widget.loc.loca!.toDouble(),
                           widget.loc.locl!.toDouble()),
-                      zoom: 15.0,
+                      zoom: 16.0,
                     ),
                     myLocationButtonEnabled: true,
                   ),

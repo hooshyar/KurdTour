@@ -11,6 +11,7 @@ class Location {
   String? openhourse;
   String? website;
   String? email;
+  double? phone;
   double? locl;
   double? loca;
   Location({
@@ -22,6 +23,7 @@ class Location {
     this.openhourse,
     this.website,
     this.email,
+    this.phone,
     this.locl,
     this.loca,
   });
@@ -35,6 +37,7 @@ class Location {
     String? openhourse,
     String? website,
     String? email,
+    double? phone,
     double? locl,
     double? loca,
   }) {
@@ -47,6 +50,7 @@ class Location {
       openhourse: openhourse ?? this.openhourse,
       website: website ?? this.website,
       email: email ?? this.email,
+      phone: phone ?? this.phone,
       locl: locl ?? this.locl,
       loca: loca ?? this.loca,
     );
@@ -62,6 +66,7 @@ class Location {
       'openhourse': openhourse,
       'website': website,
       'email': email,
+      'phone': phone,
       'locl': locl,
       'loca': loca,
     };
@@ -77,6 +82,7 @@ class Location {
       openhourse: map['openhourse'],
       website: map['website'],
       email: map['email'],
+      phone: map['phone']?.toDouble(),
       locl: map['locl']?.toDouble(),
       loca: map['loca']?.toDouble(),
     );
@@ -89,7 +95,7 @@ class Location {
 
   @override
   String toString() {
-    return 'Location(lid: $lid, image: $image, title: $title, description: $description, rating: $rating, openhourse: $openhourse, website: $website, email: $email, locl: $locl, loca: $loca)';
+    return 'Location(lid: $lid, image: $image, title: $title, description: $description, rating: $rating, openhourse: $openhourse, website: $website, email: $email, phone: $phone, locl: $locl, loca: $loca)';
   }
 
   @override
@@ -105,6 +111,7 @@ class Location {
         other.openhourse == openhourse &&
         other.website == website &&
         other.email == email &&
+        other.phone == phone &&
         other.locl == locl &&
         other.loca == loca;
   }
@@ -119,6 +126,7 @@ class Location {
         openhourse.hashCode ^
         website.hashCode ^
         email.hashCode ^
+        phone.hashCode ^
         locl.hashCode ^
         loca.hashCode;
   }

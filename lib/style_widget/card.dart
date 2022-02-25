@@ -24,8 +24,7 @@ Widget generalcard(
           child: ClipRRect(
             borderRadius: BorderRadius.circular(15),
             child: Image.network(
-              image ??
-                  'https://images.unsplash.com/photo-1547721064-da6cfb341d50',
+              image!,
               fit: BoxFit.fill,
               width: 180,
             ),
