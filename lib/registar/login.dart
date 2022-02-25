@@ -1,9 +1,17 @@
 import 'package:KurdTour/home_main/home_bottom.dart';
 import 'package:KurdTour/home_main/home_screen_main.dart';
+import 'package:KurdTour/provider/provider.dart';
 import 'package:KurdTour/registar/Signup.dart';
 import 'package:flutter/material.dart';
-
 import '../services/authentication.dart';
+import 'package:provider/provider.dart';
+
+void main() => runApp(
+      ChangeNotifierProvider<TheNameProvider>(
+        create: (_) => TheNameProvider(),
+        child: Login(),
+      ),
+    );
 
 class Login extends StatelessWidget {
   @override

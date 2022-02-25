@@ -31,17 +31,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     'assets/images/avatar.png',
                     width: 200,
                   ),
-                  const Text(
-                    "User Name",
-                    style: TextStyle(fontSize: 20),
+                  Container(
+                    margin: EdgeInsets.only(top: 10),
+                    child: const Text(
+                      "User Name",
+                      style: TextStyle(fontSize: 20),
+                    ),
                   ),
-                  Text(
-                    'giniraluser',
-                    style: TextStyle(fontSize: 20),
+                  Container(
+                    margin: EdgeInsets.only(top: 10),
+                    child: Text(
+                      'giniraluser',
+                      style: TextStyle(fontSize: 30),
+                    ),
                   ),
                   Container(
                     padding: const EdgeInsets.all(8.0),
-                    margin: EdgeInsets.only(left: 20, right: 20, top: 100),
+                    margin: EdgeInsets.only(left: 20, right: 20, top: 180),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         primary: Colors.amber[500],
