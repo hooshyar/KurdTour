@@ -14,8 +14,21 @@ class LocationDetileView extends StatefulWidget {
 
 class _LocationDetileViewState extends State<LocationDetileView> {
   late GoogleMapController mapController;
+  Map<MarkerId, Marker> markers = <MarkerId, Marker>{};
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
+    final marker = Marker(
+      markerId: MarkerId(widget.loc.title.toString()),
+      position:
+          LatLng(widget.loc.loca!.toDouble(), widget.loc.locl!.toDouble()),
+      // icon: BitmapDescriptor.,
+      infoWindow: InfoWindow(
+        title: widget.loc.title,
+      ),
+    );
+    setState(() {
+      markers[MarkerId(widget.loc.title.toString())] = marker;
+    });
   }
 
   @override
@@ -25,15 +38,6 @@ class _LocationDetileViewState extends State<LocationDetileView> {
           scaffoldBackgroundColor: Color.fromARGB(255, 255, 255, 255)),
       home: Scaffold(
         appBar: AppBar(
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.favorite,
-                color: Colors.black,
-              ),
-            ),
-          ],
           leading: IconButton(
             onPressed: () {
               Navigator.of(context).push(
@@ -184,6 +188,7 @@ class _LocationDetileViewState extends State<LocationDetileView> {
                           widget.loc.locl!.toDouble()),
                       zoom: 16.0,
                     ),
+                    markers: markers.values.toSet(),
                     myLocationButtonEnabled: true,
                   ),
                 )

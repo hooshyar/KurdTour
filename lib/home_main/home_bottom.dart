@@ -1,8 +1,6 @@
-import 'package:KurdTour/favsreen/favscreen.dart';
 import 'package:KurdTour/home_main/home_screen_main.dart';
 import 'package:KurdTour/search_screen/serchvew.dart';
 import 'package:flutter/material.dart';
-
 import '../profilescreen/profilescreen.dart';
 
 class HomeMain extends StatefulWidget {
@@ -19,8 +17,7 @@ class _HomeMainScreenState extends State<HomeMain> {
   final screens = [
     const HomeMainScreen(),
     const SerachScreen(),
-    const FaveScreen(),
-    const ProfileScreen(),
+    const ProfileScreen()
   ];
 
   @override
@@ -46,10 +43,6 @@ class _HomeMainScreenState extends State<HomeMain> {
               BottomNavigationBarItem(
                   icon: Icon(Icons.find_in_page_outlined),
                   label: 'Search',
-                  backgroundColor: Color.fromARGB(255, 255, 156, 7)),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.star),
-                  label: 'Favorite',
                   backgroundColor: Color.fromARGB(255, 255, 156, 7)),
               BottomNavigationBarItem(
                   icon: Icon(Icons.person),

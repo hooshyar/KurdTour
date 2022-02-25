@@ -1,4 +1,3 @@
-import 'package:KurdTour/favsreen/favscreen.dart';
 import 'package:KurdTour/data/generaluser.dart';
 import 'package:KurdTour/search_screen/serchvew.dart';
 import 'package:KurdTour/style_widget/card.dart';
