@@ -22,7 +22,7 @@ class _AddState extends State<Add> {
     Timer(
         const Duration(seconds: 3),
         () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => HomeMain())));
+            context, MaterialPageRoute(builder: (context) => Login())));
   }
 
   @override
