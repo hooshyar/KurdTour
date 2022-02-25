@@ -43,7 +43,7 @@ class _SerachScreenState extends State<SerachScreen> {
                 // initialValue: 'Input text',
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.email_outlined),
-                  labelText: "Email",
+                  labelText: "Location Name",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(
                       Radius.circular(10),
