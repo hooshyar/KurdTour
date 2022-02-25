@@ -2,11 +2,11 @@
 
 Explore then an explored.
 
-## Getting Started
+## About the application
 
 This project is specialized with view the most tourist location in Kurdistan region in Iraq.
 
-## Technologies use it in my application
+## Technologies use it in application
 
 google_maps_flutter: ^2.1.1 <br>
 flutter_rating_bar: ^4.0.0 <br>
@@ -17,7 +17,8 @@ cloud_firestore: ^3.1.5 <br>
 url_launcher: ^6.0.20 <br>
 
 
-## Screen of my application
+## Screenshots of application
 
 ![Alt Text](https://github.com/HekarAMohammad/KurdTour/blob/master/assets/01.gif)
 ![Alt Text](https://github.com/HekarAMohammad/KurdTour/blob/master/assets/02.gif)
+
