@@ -22,6 +22,8 @@ class _SerachScreenState extends State<SerachScreen> {
   final _fireStore = FirebaseFirestore.instance;
   FirestoreService _firestoreService = FirestoreService();
 
+  String? _searchQuery;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -41,6 +43,11 @@ class _SerachScreenState extends State<SerachScreen> {
               margin: const EdgeInsets.only(top: 20, bottom: 20),
               child: TextFormField(
                 // initialValue: 'Input text',
+                onChanged: (value) {
+                  setState(() {
+                    _searchQuery = value.toLowerCase();
+                  });
+                },
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.email_outlined),
                   labelText: "Location Name",
@@ -52,22 +59,44 @@ class _SerachScreenState extends State<SerachScreen> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 54,
-              width: 350,
-              child: ElevatedButton(
-                onPressed: () {
-                  // Respond to button press
-                },
-                style: ElevatedButton.styleFrom(
-                    primary: Colors.amber[500],
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10.0)))),
-                child: Text(
-                  'Login',
-                  style: TextStyle(fontSize: 24),
-                ),
-              ),
+            Expanded(
+              child: StreamBuilder<QuerySnapshot>(
+                  stream: _fireStore.collection("Location").snapshots(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return LinearProgressIndicator();
+                    }
+                    List<Location> _locations = snapshot.data!.docs
+                        .map((e) =>
+                            Location.fromMap(e.data() as Map<String, dynamic>))
+                        .toList();
+                    if (_searchQuery != null) {
+                      _locations = _locations
+                          .where((element) => element.title!
+                              .toLowerCase()
+                              .contains(_searchQuery!.toLowerCase()))
+                          .toList();
+                    }
+                    return ListView.builder(
+                        itemCount: _locations.length,
+                        itemBuilder: (context, index) {
+                          return InkWell(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 10, right: 10),
+                              child: generalcard(
+                                  image: _locations[index].image,
+                                  titledoc: _locations[index].title,
+                                  discription: _locations[index].description,
+                                  ratingnew: _locations[index].rating),
+                            ),
+                            onTap: () => Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => LocationDetileView(
+                                        loc: _locations[index]))),
+                          );
+                        });
+                  }),
             ),
           ],
         ),
